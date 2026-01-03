@@ -11,7 +11,7 @@ function uploadEvidence() {
   formData.append("caseId", caseId);
   formData.append("file", file);
 
-  fetch("https://evidence-backend.onrender.com", {
+  fetch("https://evidence-backend.onrender.com/upload", {
     method: "POST",
     body: formData
   })
