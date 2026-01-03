@@ -1,4 +1,4 @@
-fetch("https://evidence-backend.onrender.com")
+fetch("https://evidence-backend.onrender.com/cases")
   .then(res => res.json())
   .then(data => {
     const table = document.getElementById("policeTable");
