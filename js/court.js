@@ -76,7 +76,7 @@ function updateStatus(caseId, status) {
 function clearCase(caseId) {
   if (!confirm("Are you sure you want to clear this case?")) return;
 
-  fetch("https://evidence-backend.onrender.com", {
+  fetch("https://evidence-backend.onrender.com/case-id", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
