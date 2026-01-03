@@ -22,7 +22,7 @@
   <a href="#" onclick="logout()">Logout</a>
 </div>
 
-<!-- MAIN CONTENT (CENTERED & CLEAN) -->
+<!-- MAIN CONTENT -->
 <div class="main" style="display:flex; justify-content:center;">
   <div class="card" style="width:100%; max-width:1100px;">
 
@@ -86,9 +86,12 @@
     window.location.href = "index.html";
   }
 
-  // FETCH CASE DATA FOR POLICE DASHBOARD
-  fetch("https://evidence-frontend-tan.vercel.app/cases")
-    .then(res => res.json())
+  // ✅ FETCH CASE DATA FROM BACKEND (CORRECT)
+  fetch("https://evidence-backend.onrender.com/cases")
+    .then(res => {
+      if (!res.ok) throw new Error("Failed to fetch cases");
+      return res.json();
+    })
     .then(data => {
       const table = document.getElementById("statusTable");
 
@@ -125,6 +128,11 @@
       document.getElementById("pendingCases").innerText = pending;
       document.getElementById("approvedCases").innerText = approved;
       document.getElementById("rejectedCases").innerText = rejected;
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById("statusTable").innerHTML =
+        "<tr><td colspan='2'>Failed to load cases</td></tr>";
     });
 </script>
 
