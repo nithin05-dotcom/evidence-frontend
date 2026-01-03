@@ -1,4 +1,4 @@
-fetch("https://evidence-backend.onrender.com")
+fetch("https://evidence-backend.onrender.com/cases")
   .then(res => res.json())
   .then(data => {
     const table = document.getElementById("caseTable");
@@ -60,7 +60,7 @@ fetch("https://evidence-backend.onrender.com")
 
 /* ---------- UPDATE STATUS ---------- */
 function updateStatus(caseId, status) {
-  fetch("https://evidence-backend.onrender.com", {
+  fetch("https://evidence-backend.onrender.com/update-status", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
